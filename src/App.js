@@ -9,7 +9,6 @@ import NotFound from "./pages/NotFound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
-
 const darkTheme = createTheme({
   palette: {
     mode: 'dark'
@@ -18,12 +17,14 @@ const darkTheme = createTheme({
 
 
 const App = () => {
+  
   return (
     <div className="App">
       <ThemeProvider theme={ darkTheme }>
         
         <BrowserRouter>
           <Layout />
+           
           
           <Routes>          
             
