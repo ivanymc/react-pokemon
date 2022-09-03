@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -10,37 +10,38 @@ import { Box } from '@mui/system';
 
 const Navbar = ({ setisDrawerOpen }) => {
 
-
     return ( 
-
-        <Box sx={{ mb: 11 }}>
+        <>      
+          <Box sx={{ mb: 11 }}>
             <AppBar position="fixed" component="nav" sx={{  opacity: 0.85 }}>
-                <Toolbar>
-                    <Box sx={{ 
-                        mr: "auto",
-                        display: "flex",
-                        alignItems: "center",
-                    }}>
-                        <IconButton onClick={ () => setisDrawerOpen(true) }>
-                            <MenuIcon />
-                        </IconButton>
+              <Toolbar>
+                <Box sx={{ 
+                    mr: "auto",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                    <IconButton onClick={ () => setisDrawerOpen(true) }>
+                        <MenuIcon />
+                    </IconButton>
 
-                        <Typography
-                            variant="h6"
-                            component="div"
-                            sx={{ ml: 1 }}                            
-                        > 
-                            Pokemon
-                        </Typography>
-                    </Box>                   
+                    <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{ ml: 1 }}                            
+                    > 
+                        Pokemon
+                    </Typography>
+                </Box>                   
 
-                    <Box>
-                        <Button variant='outlined'> Login </Button>    
-                    </Box>                    
+                <Box>
+                    <Button variant='outlined' disabled> Login </Button>    
+                </Box>                    
 
-                </Toolbar>
+              </Toolbar>
             </AppBar>
-        </Box>
+          </Box>
+        </>
         
             
 

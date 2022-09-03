@@ -1,6 +1,6 @@
 import { Button, Grid } from '@mui/material'
 import { Container } from '@mui/system';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PokemonCardDetails from './PokemonCardDetails';
 // import useFetchMulti from '../hooks/useFetchMulti';
 
@@ -8,7 +8,7 @@ const PokemonCard = () => {
   const [pokemons, setPokemons] = useState([]);    
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=50');
+  const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=30');
 
   useEffect( () => {    
     getUrls()
@@ -38,36 +38,43 @@ const PokemonCard = () => {
       setIsLoading(false);
     } 
     getPokemons(data.results);  
-  };     
+  };   
+  
+ 
 
   
-  return (   
-    <Container maxWidth="lg" align="center">      
-      <Grid container spacing={3}> 
-        { error && <div> { error } </div>}
-        { isLoading && <div> Loading... </div> }
-       
-        { pokemons && pokemons.map( (pokemon, index) => (          
-          < PokemonCardDetails
-            key={ index }
-            childkey={ pokemon.order }
-            title={ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}                
-            avatar={ pokemon.id.toString().padStart(3, "0") }
-            image= { pokemon.sprites.front_default }
-            types= { pokemon.types }
-          />
-        ))}
-      </Grid>
+  return (
+    <> 
+      <Container maxWidth="lg" align="center">             
+        <Grid container spacing={3}> 
+          { error && <div> { error } </div>}
+          { isLoading && <div> Loading... </div> }
+        
+          { pokemons && pokemons.map( (pokemon, index) => (          
+            < PokemonCardDetails
+              key={ index }
+              childkey={ pokemon.order }
+              title={ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}                
+              avatar={ pokemon.id.toString().padStart(3, "0") }
+              image= { pokemon.sprites.front_default }
+              types= { pokemon.types }
+            />
+          ))}
+        </Grid>
 
-      <Button
-        onClick={ () => getUrls() }        
-        variant='outlined'
-        sx={{  my: 5 }}
-      > 
-        Show more results
-      </Button>
+        <Button
+          onClick={ () => { 
+            getUrls();
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}        
+          variant='outlined'
+          sx={{  my: 5 }}
+        > 
+          Show more results
+        </Button>
 
-    </Container>       
+      </Container>  
+    </>     
   )
 
 }
