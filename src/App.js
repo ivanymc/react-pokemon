@@ -22,7 +22,7 @@ const App = () => {
     <div className="App">
       <ThemeProvider theme={ darkTheme }>
         
-        <BrowserRouter>
+        <BrowserRouter basename={ "/react-pokemon" }>
           <Layout />
            
           
