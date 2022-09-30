@@ -46,13 +46,13 @@ const PokemonCard = () => {
   return (
     <> 
       <Container maxWidth="lg" align="center">             
-        <Grid container spacing={3}> 
           { error && <div> { error } </div>}
           { isLoading && 
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', my: 5 }}>
               <CircularProgress />
             </Box>
           }
+        <Grid container spacing={3}> 
         
           { pokemons && pokemons.map( (pokemon, index) => (          
             < PokemonCardDetails
