@@ -1,4 +1,4 @@
-import { Button, Grid } from '@mui/material'
+import { Box, Button, CircularProgress, Grid } from '@mui/material'
 import { Container } from '@mui/system';
 import React, { useEffect, useRef, useState } from 'react'
 import PokemonCardDetails from './PokemonCardDetails';
@@ -48,7 +48,11 @@ const PokemonCard = () => {
       <Container maxWidth="lg" align="center">             
         <Grid container spacing={3}> 
           { error && <div> { error } </div>}
-          { isLoading && <div> Loading... </div> }
+          { isLoading && 
+            <Box sx={{ display: 'flex' }}>
+              <CircularProgress />
+            </Box>
+          }
         
           { pokemons && pokemons.map( (pokemon, index) => (          
             < PokemonCardDetails
